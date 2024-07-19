@@ -1,0 +1,16 @@
+.widget-contenedor {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 10%;
+    font-size: 1.5vmax;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.widget-contenedor p{
+    padding-left: 10px;
+}
