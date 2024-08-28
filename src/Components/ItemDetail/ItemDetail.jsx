@@ -1,8 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import '../ItemDetail/ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount.jsx'
+import { CartContext } from "../../Context/CartContext.jsx"
 
-const ItemDetail = ({ id, nombre, imagen, categoria, descripcion, precio,cantidad }) => {
+const ItemDetail = ({ product, previo, next }) => {
+    const { nombre, imagen, categoria, descripcion, precio, cantidad} = product;
+    const { agregarCarrito, quantity } = useContext(CartContext)
+
+    const pulsarComprar = (quantity) => {
+        agregarCarrito({...product, quantity: quantity})
+    }
+
 
         return (
             <article className="CardItem">
@@ -20,8 +28,12 @@ const ItemDetail = ({ id, nombre, imagen, categoria, descripcion, precio,cantida
                     <p className="Info">Precio: ${precio}</p>
                 </section>
                 <footer className="ItemFooter">
-                    <ItemCount initial={1} stock={cantidad} onAdd={(quantity) => console.log('Cantidad Agregada ', quantity)} />
+                    <ItemCount initial={quantity} stock={cantidad} pulsarComprar={pulsarComprar} />
                 </footer>
+                <div className="cambiarProd">
+                    <button className="botonProd" onClick={previo}>Ver Anterior</button>
+                    <button className="botonProd" onClick={next}>Ver Siguiente</button>
+                </div>
             </article>
         )
 }

@@ -1,30 +1,61 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import '../ItemDetailContainer/ItemDetailContainer.css'
-import { getProductsById } from '../../../asyncMock'
+import { getProductsById, getProducts } from '../../../asyncMock'
 import ItemDetail from '../ItemDetail/ItemDetail.jsx'
-import { useParams } from 'react-router-dom' 
+import { useParams, useNavigate } from 'react-router-dom' 
+import { CartContext } from '../../Context/CartContext.jsx'
+
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
-
+    const [totalProducts, setTotalProducts] = useState(0);
     const { productId } = useParams()
+    const navigate = useNavigate();
+    const { reiniciarCantidad } = useContext(CartContext);
     
+    useEffect(() => {
+        getProducts()
+            .then(products => {
+                setTotalProducts(products.length);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    },[]);
+
     useEffect(() => {
         getProductsById(productId)
             .then(response => {
                 setProduct(response)
-                console.log(productId)
-                console.log(response)
+                reiniciarCantidad();
             })
             .catch(error => {
                 console.error(error)
             })
-    }, [])
+    }, [productId])
+
+    const previo = () => {
+        const newId = Number(productId) === 1 ? totalProducts : Number(productId) - 1; // Si el ID es 1, pasa al último producto
+        navigate(`/item/${newId}`); // Cambia la URL con el nuevo ID
+    };
+
+    const next = () => {
+        const newId = Number(productId) === totalProducts ? 1 : Number(productId) + 1; // Si el ID es el último, pasa al primer producto
+        navigate(`/item/${newId}`); // Cambia la URL con el nuevo ID
+    };
+
+    if (!product) {
+        return <p>Cargando...</p>;
+    }
 
     /* {...product}  ...son propiedades del producto */
     return(
         <div className='ItemDetailContainer'>
-            <ItemDetail {...product} /> 
+            <ItemDetail 
+                product={product}
+                previo={previo}
+                next={next}
+            /> 
         </div>
     )
 }

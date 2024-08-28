@@ -37,21 +37,21 @@ function ItemListContainer({ titulo, texto }) {
 
     return (
         <>
-        <header>
-            <h1>
-                {titulo}
-            </h1>
-            <p className='texto-bienvenida'>
-                {texto}
-            </p>
-            <img 
-                className='logo-header'
-                src={logoHeader}
-                alt="logo ecommerse negro" />
+            <header>
+                <h1>
+                    {titulo}
+                </h1>
+                <p className='texto-bienvenida'>
+                    {texto}
+                </p>
+                <img 
+                    className='logo-header'
+                    src={logoHeader}
+                    alt="logo ecommerse negro" />
 
-            
-        </header>
-        <ItemList products={products} />
+                
+            </header>
+            <ItemList products={products} />
         </>
     )
 }

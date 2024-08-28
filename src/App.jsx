@@ -4,12 +4,13 @@ import Navbar from "./Components/Navbar/Navbar.jsx"
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer.jsx"
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
+import { CartContextProvider } from './Context/CartContext.jsx'
+import Cart from "./Components/Cart/Cart.jsx"
 
 function App() {
 
   return (
-      <div className="App">
+      <CartContextProvider>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -22,13 +23,14 @@ function App() {
             texto=" Todo lo que necesitas para estar siempre en movimiento."
           />} />
           <Route path='/item/:productId' element={<ItemDetailContainer />} />
-          <Route path='*' element={<h1>404 NOT FOUND</h1>} />
+          <Route path='/*' element={<h1>404 NOT FOUND</h1>} />
+          <Route path='/Cart/Cart' element={<Cart/>} />
           </Routes>
           
           
           </BrowserRouter>
-        
-      </div>
+      
+        </CartContextProvider>
   )
 }
 

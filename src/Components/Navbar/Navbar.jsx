@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 import '../Navbar/Navbar.css'
 import logoNavbar from "../../img/juniorRowWhite.png"
 import CartWidget from "../CartWidget/CartWidget.jsx"
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom"
 
 function Navbar() {
 
@@ -25,8 +25,10 @@ function Navbar() {
                 </div>
                 
             </div>
+            <Link to="/Cart/Cart" className="anchoCart" >
+                <CartWidget />
+            </Link>
             
-            <CartWidget />
             
         </nav>
 

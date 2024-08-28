@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useContext } from "react"
 import "../ItemCount/ItemCount.css"
+import { CartContext } from "../../Context/CartContext"
 
 
 
-const ItemCount = ({stock, initial, onAdd})=> {
-    const [quantity, setQuantity] = useState(initial)
+const ItemCount = ({stock, pulsarComprar})=> {
+    const {quantity, setQuantity} = useContext(CartContext);
 
     const increment = () => {
         if(quantity < stock) {
@@ -26,8 +27,7 @@ const ItemCount = ({stock, initial, onAdd})=> {
                 <button className="Button" onClick={increment}>+</button>
             </div>
             <div>
-                <button className="Button" onClick={()=> onAdd(quantity)} 
-                disabled={!stock}>
+                <button className="Button" onClick={()=> pulsarComprar(quantity)}>
                     Agregar al Carrito
                 </button>
             </div>
