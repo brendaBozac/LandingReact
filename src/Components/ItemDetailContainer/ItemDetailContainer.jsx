@@ -1,18 +1,22 @@
 import React, { useEffect, useState, useContext } from 'react'
 import '../ItemDetailContainer/ItemDetailContainer.css'
-import { getProductsById, getProducts } from '../../../asyncMock'
+//import { getProductsById, getProducts } from '../../../asyncMock'
 import ItemDetail from '../ItemDetail/ItemDetail.jsx'
 import { useParams, useNavigate } from 'react-router-dom' 
 import { CartContext } from '../../Context/CartContext.jsx'
+import { db } from '../../services/firebaseConfig.js'
+import { getDoc, doc } from "firebase/firestore"
+
 
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
-    const [totalProducts, setTotalProducts] = useState(0);
+    //const [totalProducts, setTotalProducts] = useState(0);
     const { productId } = useParams()
     const navigate = useNavigate();
-    const { reiniciarCantidad } = useContext(CartContext);
+    //const { reiniciarCantidad } = useContext(CartContext);
     
+    /* 
     useEffect(() => {
         getProducts()
             .then(products => {
@@ -21,17 +25,30 @@ const ItemDetailContainer = () => {
             .catch(error => {
                 console.error(error);
             });
-    },[]);
+    },[]); */
 
     useEffect(() => {
-        getProductsById(productId)
+       /*  getProductsById(productId)
             .then(response => {
                 setProduct(response)
                 reiniciarCantidad();
             })
             .catch(error => {
                 console.error(error)
-            })
+            }) */
+        const fetchProduct = async () => {
+            try{
+                const productoRef = doc(db, "productos", productId)
+                const res = await getDoc(productoRef)
+                const data = res.data()
+                const productoFormateado = {id: res.id , ...data}
+                setProduct(productoFormateado)
+            }catch (error){
+                console.log(error)
+            }
+            
+        }
+        fetchProduct()
     }, [productId])
 
     const previo = () => {

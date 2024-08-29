@@ -2,18 +2,20 @@ import React, { useEffect, useState } from 'react'
 import '../ItemListContainer/ItemListContainer.css'
 import '@fontsource-variable/alexandria'
 import logoHeader from "../../img/juniorRowBlack.png"
-import { getProducts, getProductsByCategory } from '../../../asyncMock'
+import { getProducts/* , getProductsByCategory */ } from '../../../asyncMock'
 import ItemList from '../ItemList/ItemList.jsx'
 import { useParams } from 'react-router-dom'
+import { db } from '../../services/firebaseConfig.js'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 
 function ItemListContainer({ titulo, texto }) {
     const [products, setProducts] = useState([])
 
-    const { categoriaId } = useParams()
+    const { categoria } = useParams()
 
     useEffect(() => {
-        const asyncFunc = categoriaId ? getProductsByCategory : getProducts
+       /*  const asyncFunc = categoriaId ? getProductsByCategory : getProducts
 
         asyncFunc(categoriaId)
             .then(response => {
@@ -21,10 +23,37 @@ function ItemListContainer({ titulo, texto }) {
             })
             .catch(error => {
                 console.error(error)
+            }) */  
+           //asi trabajabamos trayendo los productos desde asyncMock. 
+           //ahora vamos a usar firebase db
+
+        if(categoria){
+            const prodsPorCat = query(collection(db, "productos"), where("categoria", "==", categoria))
+            getDocs(prodsPorCat).then(snapshot => {
+                const prods = snapshot.docs.map(doc => {
+                    const data = doc.data()
+                    return {id: doc.id, ...data}
+                })
+                setProducts(prods)
             })
+                
+        }else{
+            const prodsRef = collection(db, "productos")
+            getDocs(prodsRef).then(snapshot => {
+                console.log("snap", snapshot)
+                const prods = snapshot.docs.map(doc => {
+                    const data = doc.data()
+                    return {id: doc.id, ...data}
+                })
+                setProducts(prods)
+            })
+        }
+        
+        
 
-    }, [categoriaId])
 
+    }, [categoria])
+/* 
     useEffect(() => {
         getProducts()
             .then(response => {
@@ -33,7 +62,7 @@ function ItemListContainer({ titulo, texto }) {
             .catch(error => {
                 console.error(error)
             })
-    }, [])
+    }, []) */
 
     return (
         <>
