@@ -5,12 +5,21 @@ import { CartContext } from "../../Context/CartContext.jsx"
 
 const ItemDetail = ({ product, previo, next }) => {
     const { nombre, imagen, categoria, descripcion, precio, cantidad} = product;
-    const { agregarCarrito, quantity } = useContext(CartContext)
+    const { agregarCarrito, quantity, reiniciarCantidad } = useContext(CartContext)
 
     const pulsarComprar = (quantity) => {
         agregarCarrito({...product, quantity: quantity})
     }
 
+    const funcionalidadBotonPrevio = () => {
+        reiniciarCantidad();
+        previo();
+    }
+
+    const funcionalidadBotonNext = () => {
+        reiniciarCantidad();
+        next();
+    }
 
         return (
             <article className="CardItem">
@@ -31,8 +40,8 @@ const ItemDetail = ({ product, previo, next }) => {
                     <ItemCount initial={quantity} stock={cantidad} pulsarComprar={pulsarComprar} />
                 </footer>
                 <div className="cambiarProd">
-                    <button className="botonProd" onClick={previo}>Ver Anterior</button>
-                    <button className="botonProd" onClick={next}>Ver Siguiente</button>
+                    <button className="botonProd" onClick={funcionalidadBotonPrevio}>Ver Anterior</button>
+                    <button className="botonProd" onClick={funcionalidadBotonNext}>Ver Siguiente</button>
                 </div>
             </article>
         )

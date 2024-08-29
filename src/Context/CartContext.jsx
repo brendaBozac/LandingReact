@@ -40,10 +40,14 @@ export const CartContextProvider = ( {children} ) => {
     const reiniciarCantidad = () => {
         setQuantity(1);
     }
+
+    const mostrarTotal = () => {
+        return cart.reduce((acum, prod) => acum + (prod.precio * prod.quantity), 0)
+    }
     
 
     return (
-    <CartContext.Provider value={{cart, setCart, agregarCarrito, vaciarCarrito, eliminarProducto, mostrarCantidad, quantity, setQuantity, reiniciarCantidad}}>
+    <CartContext.Provider value={{cart, setCart, agregarCarrito, vaciarCarrito, eliminarProducto, mostrarCantidad, quantity, setQuantity, reiniciarCantidad, mostrarTotal}}>
         {children}
     </CartContext.Provider>)
 }

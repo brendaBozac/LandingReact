@@ -5,7 +5,7 @@ import './Cart.css'
 
 const Cart = () => {
 
-    const { contexto, cart, vaciarCarrito } = useContext(CartContext)
+    const { contexto, cart, vaciarCarrito, mostrarTotal } = useContext(CartContext)
 
     return (
         <div className="cartContainerPrincipal">
@@ -18,7 +18,7 @@ const Cart = () => {
             }
             <div className="totalBotones">
                 <button onClick={vaciarCarrito}>Vaciar Carrito</button>
-                <span>Total: $</span>
+                <p>`Total: $ {mostrarTotal()}` </p>
                 <button /* onClick={comprarTotal} */>Comprar</button>
             </div>
         </div>

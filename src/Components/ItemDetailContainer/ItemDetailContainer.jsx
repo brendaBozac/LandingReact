@@ -3,15 +3,16 @@ import '../ItemDetailContainer/ItemDetailContainer.css'
 //import { getProductsById, getProducts } from '../../../asyncMock'
 import ItemDetail from '../ItemDetail/ItemDetail.jsx'
 import { useParams, useNavigate } from 'react-router-dom' 
-import { CartContext } from '../../Context/CartContext.jsx'
+//import { CartContext } from '../../Context/CartContext.jsx'
 import { db } from '../../services/firebaseConfig.js'
-import { getDoc, doc } from "firebase/firestore"
+import { getDoc, doc, getDocs, collection } from "firebase/firestore"
 
 
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null)
     //const [totalProducts, setTotalProducts] = useState(0);
+    const [products, setProducts] = useState([]);
     const { productId } = useParams()
     const navigate = useNavigate();
     //const { reiniciarCantidad } = useContext(CartContext);
@@ -51,14 +52,33 @@ const ItemDetailContainer = () => {
         fetchProduct()
     }, [productId])
 
+    useEffect(() => {
+        // Función para obtener todos los productos
+        const fetchAllProducts = async () => {
+            try {
+                const prodsRef = collection(db, "productos");
+                const snapshot = await getDocs(prodsRef);
+                const prods = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setProducts(prods);
+            } catch (error) {
+                console.error("Error fetching products: ", error);
+            }
+        };
+
+        fetchAllProducts();
+    }, []);
+
+
     const previo = () => {
-        const newId = Number(productId) === 1 ? totalProducts : Number(productId) - 1; // Si el ID es 1, pasa al último producto
-        navigate(`/item/${newId}`); // Cambia la URL con el nuevo ID
+        const currentIndex = products.findIndex(prod => prod.id === productId);
+        const newIndex = currentIndex === 0 ? products.length - 1 : currentIndex - 1;
+        navigate(`/item/${products[newIndex].id}`);
     };
 
     const next = () => {
-        const newId = Number(productId) === totalProducts ? 1 : Number(productId) + 1; // Si el ID es el último, pasa al primer producto
-        navigate(`/item/${newId}`); // Cambia la URL con el nuevo ID
+        const currentIndex = products.findIndex(prod => prod.id === productId);
+        const newIndex = currentIndex === products.length - 1 ? 0 : currentIndex + 1;
+        navigate(`/item/${products[newIndex].id}`);
     };
 
     if (!product) {

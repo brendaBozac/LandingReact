@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import '../ItemListContainer/ItemListContainer.css'
 import '@fontsource-variable/alexandria'
 import logoHeader from "../../img/juniorRowBlack.png"
-import { getProducts/* , getProductsByCategory */ } from '../../../asyncMock'
+//import { getProducts , getProductsByCategory } from '../../../asyncMock'
 import ItemList from '../ItemList/ItemList.jsx'
 import { useParams } from 'react-router-dom'
 import { db } from '../../services/firebaseConfig.js'
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, query, where, addDoc, doc, getDoc } from 'firebase/firestore'
+// import {productos} from '../../../asyncMock'
 
 
 function ItemListContainer({ titulo, texto }) {
@@ -15,6 +16,8 @@ function ItemListContainer({ titulo, texto }) {
     const { categoria } = useParams()
 
     useEffect(() => {
+
+
        /*  const asyncFunc = categoriaId ? getProductsByCategory : getProducts
 
         asyncFunc(categoriaId)
