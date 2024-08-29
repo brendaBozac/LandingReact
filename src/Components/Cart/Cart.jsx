@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import CardItem from "../CardItem/CardItem";
-import './Cart.css'
+import './Cart.css';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
@@ -19,7 +20,9 @@ const Cart = () => {
             <div className="totalBotones">
                 <button onClick={vaciarCarrito}>Vaciar Carrito</button>
                 <p>`Total: $ {mostrarTotal()}` </p>
-                <button /* onClick={comprarTotal} */>Comprar</button>
+                {cart.length > 0 && <Link to="/Checkout" >
+                <button >Comprar</button>
+                </Link>}
             </div>
         </div>
     )
