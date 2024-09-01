@@ -1,12 +1,52 @@
-.ListGroup {
-    
+/* Estilos para el contenedor de los títulos */
+.titulosTiendaPrincipal {
+    text-align: center;
+    background-color:#F2E9E9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .titulosTiendaPrincipal h2 {
+    font-size: 3vmax;
+    font-weight: bold;
+    color: #263e41; /* Color azul suave para destacar el título principal */
+  }
+  
+  .titulosTiendaPrincipal h3 {
+    font-size: 2vmax;
+    font-weight: 400;
+    color:#405759; /* Color gris suave para un subtítulo moderno */
+  }
+  
+  /* Estilos para el contenedor de la lista de productos */
+  .ListGroup {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    padding: 4vmax;
+    padding: 2vmax;
     text-align: center;
+    background-color:#F2E9E9;
+    margin-top: 0;
+  }
+  
+  /* Estilos para los items individuales dentro de la lista */
+  /* .ListGroup .Item {
+    background-color: #e9ecef;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  } */
+  /* 
+  .ListGroup .Item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  } */
+  
 
-    
-
-}
+  .bandablanca {
+    position: absolute;
+    top: 20vmax;
+    width: 100%;
+ }

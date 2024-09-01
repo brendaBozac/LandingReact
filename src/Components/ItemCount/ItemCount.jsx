@@ -1,11 +1,13 @@
 import { useContext } from "react"
 import "../ItemCount/ItemCount.css"
 import { CartContext } from "../../Context/CartContext"
+import { Link } from "react-router-dom"
+import Cart from "../Cart/Cart"
 
 
 
 const ItemCount = ({stock, pulsarComprar})=> {
-    const {quantity, setQuantity} = useContext(CartContext);
+    const {quantity, setQuantity, cart} = useContext(CartContext);
 
     const increment = () => {
         if(quantity < stock) {
@@ -30,6 +32,14 @@ const ItemCount = ({stock, pulsarComprar})=> {
                 <button className="Button" onClick={()=> pulsarComprar(quantity)}>
                     Agregar al Carrito
                 </button>
+                
+                {cart.length > 0 &&
+                <Link to="/Cart/Cart" >
+                <button >Ir al Carrito</button>
+                </Link>
+                }
+
+                
             </div>
         </div>
 

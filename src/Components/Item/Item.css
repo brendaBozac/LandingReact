@@ -2,24 +2,57 @@
     margin: 2vmax;
     box-sizing: border-box;
     border: none;
-    width: 25vmax;
-    height: 30vmax;
+    width: 22vmax;
+    height: 28vmax;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    gap: 1vmax;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    box-shadow: 2px 2px 8px black;
+    /* box-shadow: 1px 2px 5px black; */
+    background-color: #ffffff4e;
+    transition: transform 0.3s ease;
 
+}
+
+.CardItem:hover {
+    transform: scale(1.08);
 }
 
 .ItemMain {
     font-size: 1.5vmax;
+    font-weight: bold;
+    padding: 0.5vmax;
+    color: #261501;
 
 }
 
 
 .ItemImg {
-    width: 15vmax;
-    padding: 1.5vmax;
+    width: 10vmax;
+    
+}
+
+.Info {
+    font-size: 0.8vmax;
+    font-weight: bold;
+    color: #1b1003;
+}
+
+.Option {
+    text-decoration: none;
+    background-color: #405759;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.Option:hover {
+    background-color: #5cc4cd;
 }

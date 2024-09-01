@@ -4,10 +4,13 @@
     justify-content: center;
     align-items: center;
     color: white;
-    width: 10%;
-    font-size: 1.5vmax;
+    width: 5vmax;
+    font-size: 1.2vmax;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid rgb(103, 182, 53);
+    border-radius: 5px;
+    padding: 2px;
 
 }
 

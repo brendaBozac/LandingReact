@@ -18,11 +18,21 @@ const Cart = () => {
                 })
             }
             <div className="totalBotones">
+            {cart.length > 0 ?
+            <>
                 <button onClick={vaciarCarrito}>Vaciar Carrito</button>
                 <p>`Total: $ {mostrarTotal()}` </p>
-                {cart.length > 0 && <Link to="/Checkout" >
+                <Link to="/Checkout" >
                 <button >Comprar</button>
-                </Link>}
+                </Link>
+            </> : 
+            <>
+            <h4>En este momento el Carrito está Vacío.</h4>
+            <Link to="/" >
+                <button >Volver al Inicio</button>
+            </Link>
+            </>
+            }
             </div>
         </div>
     )

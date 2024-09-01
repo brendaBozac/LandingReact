@@ -16,12 +16,12 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' element={<ItemListContainer 
-            titulo="Bienvenidos a Junior Sport!"
-            texto=" Todo lo que necesitas para estar siempre en movimiento."
+            titulo="Junior Sport"
+            texto="Tools for Digital Nomads"
           />} />
           <Route path='/categoria/:categoria' element={<ItemListContainer 
-            titulo="Bienvenidos a Junior Sport!"
-            texto=" Todo lo que necesitas para estar siempre en movimiento."
+            titulo="Junior Sport"
+            texto="Tools for Digital Nomads"
           />} />
           <Route path='/item/:productId' element={<ItemDetailContainer />} />
           <Route path='/*' element={<h1>404 NOT FOUND</h1>} />
