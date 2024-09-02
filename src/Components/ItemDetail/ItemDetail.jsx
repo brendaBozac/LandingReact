@@ -39,18 +39,16 @@ const ItemDetail = ({ product, previo, next }) => {
                 </div>
                 
                 <section className="CardDerecha">
-                    <p className="Info">Categoria = {categoria}</p>
-                    <p className="Info">Descripcion = {descripcion}</p>
+                    <p className="Info">Categoria: {categoria}</p>
+                    <p className="Info">Descripcion: {descripcion}</p>
                     <p className="Info">Precio: ${precio}</p>
                     <div className="ItemCountDiv">
                         <ItemCount initial={quantity} stock={cantidad} pulsarComprar={pulsarComprar} />
                     </div>
                 </section>
-                
-                
-                
             </article>
-            <div>
+
+            <div className="BotonInicioDesdeItemDetailDiv">
                     <Link to="/" >
                     <button className="volverInicio">Volver al Inicio</button>
                     </Link>

@@ -1,3 +1,64 @@
-.cartContainerPrincipal {
+/* .cartContainerPrincipal {
     margin-top: 5vmax;
 }
+ */
+
+
+ .cartContainerPrincipal {
+    margin-top: 5vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vmax;
+    gap: 2vmax;
+    background-color: #f9f9f9; /* Ajusta según tu paleta de colores */
+    min-height: 100vh;
+  }
+  
+  .totalBotones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vmax;
+    width: 80%;
+    max-width: 50vmax;
+    background-color: #ffffff;
+    padding: 2vmax;
+    border-radius: 1vmax;
+    box-shadow: 0 0 1vmax rgba(0, 0, 0, 0.1);
+  }
+  
+  .totalBotones button {
+    padding: 1vmax 2vmax;
+    background-color: #007bff; /* Azul moderno, ajusta según tu paleta */
+    color: #fff;
+    border: none;
+    border-radius: 0.5vmax;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .totalBotones button:hover {
+    background-color: #0056b3; /* Ajusta para un efecto hover */
+  }
+  
+  .totalBotones p {
+    font-size: 1.5vmax;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .totalBotones h4 {
+    font-size: 1.8vmax;
+    color: #333;
+    text-align: center;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  /* 
+  @media (min-width: 768px) {
+    .totalBotones 
+      flex-direction: row;
+    } */

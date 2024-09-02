@@ -28,14 +28,14 @@ const ItemCount = ({stock, pulsarComprar})=> {
                 <h4 className="Number">{quantity}</h4>
                 <button className="Button" onClick={increment}>+</button>
             </div>
-            <div>
+            <div className="BotonesCarritoDiv">
                 <button className="Button" onClick={()=> pulsarComprar(quantity)}>
                     Agregar al Carrito
                 </button>
                 
                 {cart.length > 0 &&
                 <Link to="/Cart/Cart" >
-                <button >Ir al Carrito</button>
+                <button className="Button">Ir al Carrito</button>
                 </Link>
                 }
 

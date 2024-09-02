@@ -19,9 +19,9 @@ function Navbar() {
                 </Link>
 
                 <div className="Categories">
-                    <NavLink to={`/categoria/mochilas`} className={({ isActive }) => isActive ? 'ActiveOption' : 'PosibleOption'}>Mochilas</NavLink>
-                    <NavLink to={`/categoria/tecnologia`} className={({ isActive }) => isActive ? 'ActiveOption' : 'PosibleOption'}>Tecnología</NavLink>
-                    <NavLink to={`/categoria/accesorios`} className={({ isActive }) => isActive ? 'ActiveOption' : 'PosibleOption'}>Accesorios</NavLink>
+                    <NavLink to={`/categoria/mochilas`} className={({ isActive }) => isActive ? 'ActiveOption' : 'PosibleOption'}>Backpacks</NavLink>
+                    <NavLink to={`/categoria/tecnologia`} className={({ isActive }) => isActive ? 'ActiveOption' : 'PosibleOption'}>Technology</NavLink>
+                    <NavLink to={`/categoria/accesorios`} className={({ isActive }) => isActive ? 'ActiveOption' : 'PosibleOption'}>Accessories</NavLink>
                 </div>
                 
             </div>

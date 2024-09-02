@@ -1,6 +1,31 @@
 .Controls {
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
+    gap: 1vmax;
+    margin-bottom: 1vmax;
+}
 
+.Controls .Button {
+    font-size: 1.5vmax;
+    padding: 0.2vmax 0.6vmax;
+    font-weight: bold;
+    cursor: pointer;
+}
 
+.Controls .Number {
+    font-size: 1.5vmax;
+    padding: 0.2vmax 1vmax;
+    font-weight: bold;
+}
+
+.BotonesCarritoDiv {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 0.6vmax;
+}
+
+.BotonesCarritoDiv .Button {
+    cursor: pointer;
+    padding: 0.2vmax 0.5vmax;
 }
